@@ -1,0 +1,4 @@
+en:
+  errors:
+    messages:
+      invalid_base64: is in invalid URI format.
