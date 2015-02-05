@@ -28,6 +28,7 @@ Name | Value | Default | Desc.
 ----|----|----|----
 `scheme` | Array of String | nil | Specify allowed scheme types.
 `allow_no_scheme` | Boolean | false | Whether scheme less URI is allowed.
+`allow_no_host` | Boolean | false | Whether host less URI is allowed.
 
 ```rb
 validates :my_url_attribute, url: { scheme: ['https'] }

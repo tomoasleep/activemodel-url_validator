@@ -14,6 +14,12 @@ shared_examples_for 'scheme less value is given', given: :scheme_less do
   end
 end
 
+shared_examples_for 'host less value is given', given: :host_less do
+  let(:value) do
+    'http:///host/less'
+  end
+end
+
 [:http, :https].each do |scheme|
   shared_examples_for "#{scheme} URI is given", given: scheme do
     let(:value) do
@@ -26,6 +32,12 @@ end
 
 shared_examples_for 'allow_no_scheme is true', allow_no_scheme: true do
   let(:allow_no_scheme) do
+    true
+  end
+end
+
+shared_examples_for 'allow_no_host is true', allow_no_host: true do
+  let(:allow_no_host) do
     true
   end
 end
@@ -72,6 +84,14 @@ describe UrlValidator do
       end
     end
 
+    context 'when a host less URI is given', given: :host_less do
+      it { should be_falsey }
+
+      context 'and host less URI is allowed', allow_no_host: true do
+        it { should be_truthy }
+      end
+    end
+
     context 'when a HTTP URI is given', given: :http do
       it { should be_truthy }
 
@@ -109,6 +129,10 @@ describe UrlValidator do
         it { should be_invalid }
       end
 
+      context 'and a valid host less value is given', given: :host_less do
+        it { should be_invalid }
+      end
+
       context 'and a valid http value is given', given: :http do
         it { should be_valid }
       end
@@ -126,6 +150,18 @@ describe UrlValidator do
       end
 
       context 'and a valid scheme less value is given', given: :scheme_less do
+        it { should be_valid }
+      end
+    end
+
+    context 'when allow_no_host is true' do
+      let(:model_class) do
+        Class.new(TestModel) do
+          validates :attr, url: { allow_no_host: true }
+        end
+      end
+
+      context 'and a valid host less value is given', given: :host_less do
         it { should be_valid }
       end
     end
