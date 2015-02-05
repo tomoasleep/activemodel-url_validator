@@ -14,6 +14,12 @@ shared_examples_for 'scheme less value is given', given: :scheme_less do
   end
 end
 
+shared_examples_for 'empty string is given', given: :empty do
+  let(:value) do
+    ''
+  end
+end
+
 shared_examples_for 'host less value is given', given: :host_less do
   let(:value) do
     'http:///host/less'
@@ -68,7 +74,11 @@ describe UrlValidator do
       options
     end
 
-    context 'when invalid value is given', given: :invalid do
+    context 'when an empty string is given', given: :empty do
+      it { should be_falsey }
+    end
+
+    context 'when an invalid value is given', given: :invalid do
       it { should be_falsey }
     end
 
@@ -130,6 +140,10 @@ describe UrlValidator do
       end
 
       context 'and a valid host less value is given', given: :host_less do
+        it { should be_invalid }
+      end
+
+      context 'and an empty string is given', given: :empty do
         it { should be_invalid }
       end
 
