@@ -1,6 +1,6 @@
 # activemodel-url_validator
 
-[![Build Status](https://travis-ci.org/increments/activemodel-url_validator.svg?branch=master)](https://travis-ci.org/increments/activemodel-url_validator)
+[![Build Status](https://travis-ci.org/increments/activemodel-url_validator.svg?branch=master)](https://travis-ci.org/increments/activemodel-url_validator) [![Code Climate](https://codeclimate.com/github/increments/activemodel-url_validator/badges/gpa.svg)](https://codeclimate.com/github/increments/activemodel-url_validator) [![Coverage Status](https://coveralls.io/repos/increments/activemodel-url_validator/badge.svg)](https://coveralls.io/r/increments/activemodel-url_validator) [![Dependency Status](https://gemnasium.com/increments/activemodel-url_validator.svg)](https://gemnasium.com/increments/activemodel-url_validator)
 
 ## Usage
 
